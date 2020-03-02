@@ -16,6 +16,9 @@
 		9A2F90742409D00000B4C180 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F90732409D00000B4C180 /* HomeViewController.swift */; };
 		9A2F90762409D02500B4C180 /* HikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F90752409D02500B4C180 /* HikeViewController.swift */; };
 		9A2F90782409D03B00B4C180 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F90772409D03B00B4C180 /* StatViewController.swift */; };
+		9A2F907F240DABBC00B4C180 /* UnitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F907E240DABBC00B4C180 /* UnitExtensions.swift */; };
+		9A2F9081240DAC4000B4C180 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9080240DAC4000B4C180 /* FormatDisplay.swift */; };
+		9A2F9083240DAD5600B4C180 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9082240DAD5600B4C180 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		9A2F90732409D00000B4C180 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9A2F90752409D02500B4C180 /* HikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeViewController.swift; sourceTree = "<group>"; };
 		9A2F90772409D03B00B4C180 /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
+		9A2F907E240DABBC00B4C180 /* UnitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtensions.swift; sourceTree = "<group>"; };
+		9A2F9080240DAC4000B4C180 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
+		9A2F9082240DAD5600B4C180 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,9 @@
 		9A2F9079240D84BE00B4C180 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A2F907E240DABBC00B4C180 /* UnitExtensions.swift */,
+				9A2F9080240DAC4000B4C180 /* FormatDisplay.swift */,
+				9A2F9082240DAD5600B4C180 /* LocationManager.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -168,7 +177,10 @@
 				9A2F90762409D02500B4C180 /* HikeViewController.swift in Sources */,
 				9A2F905E2409C8C700B4C180 /* SceneDelegate.swift in Sources */,
 				9A2F90782409D03B00B4C180 /* StatViewController.swift in Sources */,
+				9A2F9081240DAC4000B4C180 /* FormatDisplay.swift in Sources */,
+				9A2F907F240DABBC00B4C180 /* UnitExtensions.swift in Sources */,
 				9A2F90742409D00000B4C180 /* HomeViewController.swift in Sources */,
+				9A2F9083240DAD5600B4C180 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
