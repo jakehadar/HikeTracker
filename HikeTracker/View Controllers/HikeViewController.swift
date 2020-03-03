@@ -37,11 +37,6 @@ class HikeViewController: UIViewController {
 
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        timer?.invalidate()
-        locationManager.stopUpdatingLocation()
-     }
     
     @IBAction func startHike(_ sender: UIBarButtonItem) {
         locationList.removeAll()
@@ -90,7 +85,7 @@ class HikeViewController: UIViewController {
     
     func initializeLocationManager() {
         locationManager.delegate = self
-        locationManager.distanceFilter = 20
+        locationManager.distanceFilter = 10
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
@@ -155,6 +150,7 @@ extension HikeViewController: CLLocationManagerDelegate {
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
                 mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
             }
+            
         locationList.append(newLocation)
         }
     }
@@ -167,7 +163,7 @@ extension HikeViewController: MKMapViewDelegate {
         }
         let renderedLine = MKPolylineRenderer(polyline: polyline)
         renderedLine.strokeColor = .systemBlue
-        renderedLine.lineWidth = 5
+        renderedLine.lineWidth = 3
         return renderedLine
     }
 }
