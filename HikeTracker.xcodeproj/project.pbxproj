@@ -19,6 +19,7 @@
 		9A2F907F240DABBC00B4C180 /* UnitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F907E240DABBC00B4C180 /* UnitExtensions.swift */; };
 		9A2F9081240DAC4000B4C180 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9080240DAC4000B4C180 /* FormatDisplay.swift */; };
 		9A2F9083240DAD5600B4C180 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9082240DAD5600B4C180 /* LocationManager.swift */; };
+		9A2F9085240E161100B4C180 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9084240E161100B4C180 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		9A2F907E240DABBC00B4C180 /* UnitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtensions.swift; sourceTree = "<group>"; };
 		9A2F9080240DAC4000B4C180 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 		9A2F9082240DAD5600B4C180 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9A2F9084240E161100B4C180 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				9A2F90672409C8CA00B4C180 /* Assets.xcassets */,
 				9A2F90692409C8CA00B4C180 /* LaunchScreen.storyboard */,
 				9A2F906C2409C8CA00B4C180 /* Info.plist */,
+				9A2F9084240E161100B4C180 /* CoreDataStack.swift */,
 				9A2F90642409C8C700B4C180 /* HikeTracker.xcdatamodeld */,
 				9A2F9079240D84BE00B4C180 /* Supporting Files */,
 			);
@@ -177,6 +180,7 @@
 				9A2F90762409D02500B4C180 /* HikeViewController.swift in Sources */,
 				9A2F905E2409C8C700B4C180 /* SceneDelegate.swift in Sources */,
 				9A2F90782409D03B00B4C180 /* StatViewController.swift in Sources */,
+				9A2F9085240E161100B4C180 /* CoreDataStack.swift in Sources */,
 				9A2F9081240DAC4000B4C180 /* FormatDisplay.swift in Sources */,
 				9A2F907F240DABBC00B4C180 /* UnitExtensions.swift in Sources */,
 				9A2F90742409D00000B4C180 /* HomeViewController.swift in Sources */,

@@ -24,75 +24,74 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     
-    
+//    private var hike: Hike?
     private let locationManager = LocationManager.shared
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
-    private var locationList: [CLLocation] = []
+    var locationList: [CLLocation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+        locationManager.stopUpdatingLocation()
+     }
     
     @IBAction func startHike(_ sender: UIBarButtonItem) {
-        checkLocationServices()
+        locationList.removeAll()
+        mapView.removeOverlays(mapView.overlays)
+        initializeHikeTracking()
     }
     
-    
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setUpLocationManger()
-            checkLocationAuthorization()
-        } else {
-            // have user turn on location services
-        }
-    }
-    
-    func setUpLocationManger() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            mapView.showsUserLocation = true
-            initializeHikeTracking()
-            centerViewOnUserLocation()
-            locationManager.startUpdatingLocation()
-            break
-        case .denied:
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            break
-        case .restricted:
-            break
-        case .authorizedAlways:
-            break
-        @unknown default:
-            fatalError()
-        }
+    @IBAction func stopHike(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Are you sure?",
+                                                message: "Do you wish to end your hike?",
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in self.stopHike()
+        })
+        alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
+          self.stopHike()
+          _ = self.navigationController?.popToRootViewController(animated: true)
+        })
+        
+        present(alertController, animated: true)
     }
     
     func initializeHikeTracking() {
         startButton.isEnabled = false
         stopButton.isEnabled = true
-        mapView.removeOverlays(mapView.overlays)
+        
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        mapView.showsCompass = true
+        
         seconds = 0
+        distance = Measurement(value: 0, unit: UnitLength.meters)
+        updateCurrentStats()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.incrementSeconds()
         }
-        distance = Measurement(value: 0, unit: UnitLength.meters)
-        locationList.removeAll()
-        updateCurrentStats()
+        initializeLocationManager()
     }
     
     func incrementSeconds() {
         seconds += 1
         updateCurrentStats()
+    }
+    
+    func initializeLocationManager() {
+        locationManager.delegate = self
+        locationManager.distanceFilter = 10
+        locationManager.activityType = .fitness
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
     }
     
     func updateCurrentStats() {
@@ -104,36 +103,48 @@ class HikeViewController: UIViewController {
         paceLabel.text = "Pace:  \(formattedPace)"
      }
     
-    func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            mapView.setRegion(region, animated: true)
-        }
+    func stopHike() {
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
+        locationManager.stopUpdatingLocation()
     }
- 
+//
+//    func saveHike() {
+//        let newHike = Hike(context: CoreDataStack.context)
+//        newHike.distance = distance.value
+//        newHike.duration = Int16(seconds)
+//        newHike.timestamp = Date()
+//
+//        for location in locationList {
+//            let locationObject = Location(context: CoreDataStack.context)
+//            locationObject.timestamp = location.timestamp
+//            locationObject.latitude = location.coordinate.latitude
+//            locationObject.longitude = location.coordinate.longitude
+//            newHike.addToLocations(locationObject)
+//        }
+//
+//        CoreDataStack.saveContext()
+//
+//        hike = Hike
+//    }
+//
 }
 
 extension HikeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:   [CLLocation]) {
         for newLocation in locations {
-            let howRecent = newLocation.timestamp.timeIntervalSinceNow
-            guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
+            guard newLocation.horizontalAccuracy < 20 && abs(newLocation.timestamp.timeIntervalSinceNow) < 10 else { continue }
         
             if let lastLocation = locationList.last {
+                let elevation = lastLocation.altitude.rounded()
+                altitudeLabel.text = ("Altitude: \(Int(elevation)) m")
                 let delta = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: delta, unit: UnitLength.meters)
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
                 mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-                let region = MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-                mapView.setRegion(region, animated: true)
             }
-        
-            locationList.append(newLocation)
+        locationList.append(newLocation)
         }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-           checkLocationAuthorization()
     }
 }
 
@@ -142,10 +153,10 @@ extension HikeViewController: MKMapViewDelegate {
         guard let polyline = overlay as? MKPolyline else {
             return MKOverlayRenderer(overlay: overlay)
         }
-        let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = .green
-        renderer.lineWidth = 3
-        return renderer
+        let renderedLine = MKPolylineRenderer(polyline: polyline)
+        renderedLine.strokeColor = .green
+        renderedLine.lineWidth = 5
+        return renderedLine
     }
 }
 

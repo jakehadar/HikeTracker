@@ -29,7 +29,7 @@ struct FormatDisplay {
   
     static func pace(distance: Measurement<UnitLength>, seconds: Int, outputUnit: UnitSpeed) -> String {
         let formatter = MeasurementFormatter()
-        formatter.unitOptions = [.providedUnit] // 1
+        formatter.unitOptions = [.providedUnit]
         let speedMagnitude = seconds != 0 ? distance.value / Double(seconds) : 0
         let speed = Measurement(value: speedMagnitude, unit: UnitSpeed.metersPerSecond)
         return formatter.string(from: speed.converted(to: outputUnit))
