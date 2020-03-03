@@ -24,13 +24,14 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     
-//    private var hike: Hike?
     private let locationManager = LocationManager.shared
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
     var locationList: [CLLocation] = []
     
+    
+//    var hike: Hike?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +55,7 @@ class HikeViewController: UIViewController {
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in self.stopHike()
+//            self.saveHike()
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
           self.stopHike()
@@ -109,7 +111,7 @@ class HikeViewController: UIViewController {
         stopButton.isEnabled = false
         locationManager.stopUpdatingLocation()
     }
-//
+
 //    func saveHike() {
 //        let newHike = Hike(context: CoreDataStack.context)
 //        newHike.distance = distance.value
@@ -128,7 +130,7 @@ class HikeViewController: UIViewController {
 //
 //        hike = Hike
 //    }
-//
+
 }
 
 extension HikeViewController: CLLocationManagerDelegate {
