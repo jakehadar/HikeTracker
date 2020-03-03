@@ -24,17 +24,16 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     
-    
-    let locationManager = LocationManager.shared
+//    private var hike: Hike?
+    private let locationManager = LocationManager.shared
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
     var locationList: [CLLocation] = []
     
-//    var hike: Hike?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,7 +49,18 @@ class HikeViewController: UIViewController {
     }
     
     @IBAction func stopHike(_ sender: UIBarButtonItem) {
-      
+        let alertController = UIAlertController(title: "Are you sure?",
+                                                message: "Do you wish to end your hike?",
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in self.stopHike()
+        })
+        alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
+          self.stopHike()
+          _ = self.navigationController?.popToRootViewController(animated: true)
+        })
+        
+        present(alertController, animated: true)
     }
     
     func initializeHikeTracking() {
@@ -59,6 +69,9 @@ class HikeViewController: UIViewController {
         
         mapView.delegate = self
         mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        mapView.showsCompass = true
+        
         seconds = 0
         distance = Measurement(value: 0, unit: UnitLength.meters)
         updateCurrentStats()
@@ -89,7 +102,32 @@ class HikeViewController: UIViewController {
         timeLabel.text = "Time:  \(formattedTime)"
         paceLabel.text = "Pace:  \(formattedPace)"
      }
- 
+    
+    func stopHike() {
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
+        locationManager.stopUpdatingLocation()
+    }
+//
+//    func saveHike() {
+//        let newHike = Hike(context: CoreDataStack.context)
+//        newHike.distance = distance.value
+//        newHike.duration = Int16(seconds)
+//        newHike.timestamp = Date()
+//
+//        for location in locationList {
+//            let locationObject = Location(context: CoreDataStack.context)
+//            locationObject.timestamp = location.timestamp
+//            locationObject.latitude = location.coordinate.latitude
+//            locationObject.longitude = location.coordinate.longitude
+//            newHike.addToLocations(locationObject)
+//        }
+//
+//        CoreDataStack.saveContext()
+//
+//        hike = Hike
+//    }
+//
 }
 
 extension HikeViewController: CLLocationManagerDelegate {
@@ -98,12 +136,12 @@ extension HikeViewController: CLLocationManagerDelegate {
             guard newLocation.horizontalAccuracy < 20 && abs(newLocation.timestamp.timeIntervalSinceNow) < 10 else { continue }
         
             if let lastLocation = locationList.last {
+                let elevation = lastLocation.altitude.rounded()
+                altitudeLabel.text = ("Altitude: \(Int(elevation)) m")
                 let delta = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: delta, unit: UnitLength.meters)
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
                 mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-                let region = MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-                mapView.setRegion(region, animated: true)
             }
         locationList.append(newLocation)
         }
@@ -117,7 +155,7 @@ extension HikeViewController: MKMapViewDelegate {
         }
         let renderedLine = MKPolylineRenderer(polyline: polyline)
         renderedLine.strokeColor = .green
-        renderedLine.lineWidth = 3
+        renderedLine.lineWidth = 5
         return renderedLine
     }
 }
