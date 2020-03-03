@@ -91,7 +91,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rnA-XT-2ko"/>
                                     <barButtonItem title="Hike Stats" springLoaded="YES" id="AGI-rV-4QM">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="yla-kk-oFZ" kind="show" id="Qt9-Hi-DE0"/>
                                         </connections>
@@ -150,7 +150,9 @@
                         <viewLayoutGuide key="safeArea" id="dz9-cd-FCp"/>
                     </view>
                     <navigationItem key="navigationItem" title="HikeTracker" id="yLS-GK-nch">
-                        <barButtonItem key="rightBarButtonItem" springLoaded="YES" systemItem="camera" id="2gL-at-yQW"/>
+                        <barButtonItem key="rightBarButtonItem" springLoaded="YES" systemItem="camera" id="2gL-at-yQW">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="altitudeLabel" destination="SNB-Bb-nj3" id="MHS-eY-Crz"/>
@@ -177,11 +179,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jcP-fp-mPo">
-                                <rect key="frame" x="44" y="384" width="286" height="214"/>
+                                <rect key="frame" x="44" y="365" width="286" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anV-Oa-k7O">
-                                <rect key="frame" x="44" y="60" width="286" height="301"/>
+                                <rect key="frame" x="44" y="84" width="286" height="245"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>

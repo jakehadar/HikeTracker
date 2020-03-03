@@ -24,13 +24,14 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     
-//    private var hike: Hike?
     private let locationManager = LocationManager.shared
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
     var locationList: [CLLocation] = []
     
+    
+//    var hike: Hike?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +55,7 @@ class HikeViewController: UIViewController {
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in self.stopHike()
+//            self.saveHike()
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
           self.stopHike()
@@ -88,7 +90,7 @@ class HikeViewController: UIViewController {
     
     func initializeLocationManager() {
         locationManager.delegate = self
-        locationManager.distanceFilter = 10
+        locationManager.distanceFilter = 20
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
@@ -97,10 +99,11 @@ class HikeViewController: UIViewController {
     func updateCurrentStats() {
         let formattedDistance = FormatDisplay.distance(distance)
         let formattedTime = FormatDisplay.time(seconds)
-        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+        //AveragePace
+        //let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds,             outputUnit: UnitSpeed.minutesPerMile)
+        //        paceLabel.text = "Pace:  \(formattedPace)"
         distanceLabel.text = "Distance:  \(formattedDistance)"
         timeLabel.text = "Time:  \(formattedTime)"
-        paceLabel.text = "Pace:  \(formattedPace)"
      }
     
     func stopHike() {
@@ -108,7 +111,7 @@ class HikeViewController: UIViewController {
         stopButton.isEnabled = false
         locationManager.stopUpdatingLocation()
     }
-//
+
 //    func saveHike() {
 //        let newHike = Hike(context: CoreDataStack.context)
 //        newHike.distance = distance.value
@@ -127,7 +130,7 @@ class HikeViewController: UIViewController {
 //
 //        hike = Hike
 //    }
-//
+
 }
 
 extension HikeViewController: CLLocationManagerDelegate {
@@ -136,8 +139,17 @@ extension HikeViewController: CLLocationManagerDelegate {
             guard newLocation.horizontalAccuracy < 20 && abs(newLocation.timestamp.timeIntervalSinceNow) < 10 else { continue }
         
             if let lastLocation = locationList.last {
+                
+                //Current altitude
                 let elevation = lastLocation.altitude.rounded()
                 altitudeLabel.text = ("Altitude: \(Int(elevation)) m")
+                
+                //Current speed (miles per minute)
+                var speed: CLLocationSpeed = CLLocationSpeed()
+                speed = 26.8224 / locationManager.location!.speed
+                paceLabel.text = String(format: "Pace: %.2f min/mi", speed)
+                
+                //Create polyline segment
                 let delta = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: delta, unit: UnitLength.meters)
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
@@ -154,7 +166,7 @@ extension HikeViewController: MKMapViewDelegate {
             return MKOverlayRenderer(overlay: overlay)
         }
         let renderedLine = MKPolylineRenderer(polyline: polyline)
-        renderedLine.strokeColor = .green
+        renderedLine.strokeColor = .systemBlue
         renderedLine.lineWidth = 5
         return renderedLine
     }
