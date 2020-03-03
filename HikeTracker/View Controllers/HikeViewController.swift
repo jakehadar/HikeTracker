@@ -10,6 +10,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class HikeViewController: UIViewController {
   
@@ -31,7 +32,7 @@ class HikeViewController: UIViewController {
     var locationList: [CLLocation] = []
     
     
-//    var hike: Hike?
+    var hike: Hike?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -108,7 +109,7 @@ class HikeViewController: UIViewController {
     }
 
 //    func saveHike() {
-//        let newHike = Hike(context: CoreDataStack.context)
+//        let newHike = Hike(context: CoreData.context)
 //        newHike.distance = distance.value
 //        newHike.duration = Int16(seconds)
 //        newHike.timestamp = Date()
@@ -121,7 +122,7 @@ class HikeViewController: UIViewController {
 //            newHike.addToLocations(locationObject)
 //        }
 //
-//        CoreDataStack.saveContext()
+//        CoreData.saveContext()
 //
 //        hike = Hike
 //    }
