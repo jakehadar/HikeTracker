@@ -10,6 +10,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class HikeViewController: UIViewController {
   
@@ -31,17 +32,12 @@ class HikeViewController: UIViewController {
     var locationList: [CLLocation] = []
     
     
-//    var hike: Hike?
+    var hike: Hike?
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        timer?.invalidate()
-        locationManager.stopUpdatingLocation()
-     }
     
     @IBAction func startHike(_ sender: UIBarButtonItem) {
         locationList.removeAll()
@@ -90,7 +86,7 @@ class HikeViewController: UIViewController {
     
     func initializeLocationManager() {
         locationManager.delegate = self
-        locationManager.distanceFilter = 20
+        locationManager.distanceFilter = 10
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
@@ -113,7 +109,7 @@ class HikeViewController: UIViewController {
     }
 
 //    func saveHike() {
-//        let newHike = Hike(context: CoreDataStack.context)
+//        let newHike = Hike(context: CoreData.context)
 //        newHike.distance = distance.value
 //        newHike.duration = Int16(seconds)
 //        newHike.timestamp = Date()
@@ -126,7 +122,7 @@ class HikeViewController: UIViewController {
 //            newHike.addToLocations(locationObject)
 //        }
 //
-//        CoreDataStack.saveContext()
+//        CoreData.saveContext()
 //
 //        hike = Hike
 //    }
@@ -155,6 +151,7 @@ extension HikeViewController: CLLocationManagerDelegate {
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
                 mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
             }
+            
         locationList.append(newLocation)
         }
     }
@@ -167,7 +164,7 @@ extension HikeViewController: MKMapViewDelegate {
         }
         let renderedLine = MKPolylineRenderer(polyline: polyline)
         renderedLine.strokeColor = .systemBlue
-        renderedLine.lineWidth = 5
+        renderedLine.lineWidth = 3
         return renderedLine
     }
 }
