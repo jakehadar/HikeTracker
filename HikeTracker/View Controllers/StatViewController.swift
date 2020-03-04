@@ -11,13 +11,12 @@ import CoreLocation
 import CoreData
 
 class StatViewController: UIViewController {
-    
-//    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var timeElapsedLabel: UILabel!
     @IBOutlet weak var distanceTravelledLabel: UILabel!
     @IBOutlet weak var averagePaceLabel: UILabel!
     @IBOutlet weak var elevationGainedLabel: UILabel!
     @IBOutlet weak var elevationLostLabel: UILabel!
+    
     
     var hike: Hike!
     
@@ -25,7 +24,7 @@ class StatViewController: UIViewController {
         super.viewDidLoad()
         initializeStatsView()
     }
-    
+
     func initializeStatsView() {
         let distance = Measurement(value: hike.distance, unit: UnitLength.meters)
         let seconds = Int(hike.duration)
@@ -34,7 +33,7 @@ class StatViewController: UIViewController {
         let formattedPace = FormatDisplay.pace(distance: distance,
                                                  seconds: seconds,
                                                  outputUnit: UnitSpeed.minutesPerMile)
-        
+
         timeElapsedLabel.text = "\(formattedTime)"
         distanceTravelledLabel.text = "\(formattedDistance)"
         averagePaceLabel.text = "\(formattedPace)"

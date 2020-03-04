@@ -139,7 +139,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="hjv-Hd-Adf">
                                 <rect key="frame" x="0.0" y="116" width="375" height="507"/>
@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1tY-4Y-IEh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381.60000000000002" y="23.838080959520241"/>
+            <point key="canvasLocation" x="466" y="24"/>
         </scene>
         <!--Hike Stats-->
         <scene sceneID="FUy-Sv-7o3">
@@ -183,7 +183,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="jcP-fp-mPo">
-                                <rect key="frame" x="30" y="256" width="318" height="374"/>
+                                <rect key="frame" x="30" y="270" width="318" height="360"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anV-Oa-k7O">
@@ -269,12 +269,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Hike Stats" id="TzU-MB-war"/>
                     <connections>
-                        <outlet property="averagePaceLabel" destination="ANM-cv-83Z" id="4WZ-c7-PMn"/>
-                        <outlet property="distanceTravelledLabel" destination="LCh-DO-tr0" id="IjV-lU-4tu"/>
-                        <outlet property="elevationGainedLabel" destination="Fv8-Rq-obg" id="fWN-EM-fl2"/>
-                        <outlet property="elevationLostLabel" destination="sM6-ja-OFM" id="cDf-LU-Lgt"/>
-                        <outlet property="mapView" destination="jcP-fp-mPo" id="r8a-jz-yk8"/>
-                        <outlet property="timeElapsedLabel" destination="7Hw-lL-FiO" id="VAA-LT-hiS"/>
+                        <outlet property="averagePaceLabel" destination="ANM-cv-83Z" id="lk7-BO-HRK"/>
+                        <outlet property="distanceTravelledLabel" destination="LCh-DO-tr0" id="sdJ-Lu-FAp"/>
+                        <outlet property="elevationGainedLabel" destination="Fv8-Rq-obg" id="caP-kx-734"/>
+                        <outlet property="elevationLostLabel" destination="sM6-ja-OFM" id="tfJ-AI-4jn"/>
+                        <outlet property="timeElapsedLabel" destination="7Hw-lL-FiO" id="CSb-w9-QTS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVT-B8-tfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

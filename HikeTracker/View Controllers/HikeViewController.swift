@@ -11,6 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreData
+import CoreMotion
 
 class HikeViewController: UIViewController {
   
@@ -25,23 +26,26 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     
-    private let locationManager = LocationManager.shared
-    private var seconds = 0
-    private var timer: Timer?
-    private var distance = Measurement(value: 0, unit: UnitLength.meters)
+    let locationManager = LocationManager.shared
+    let altimeter = CMAltimeter()
+    var seconds = 0
+    var timer: Timer?
+    var distance = Measurement(value: 0, unit: UnitLength.meters)
+    var netAltitude = 0
     var locationList: [CLLocation] = []
     
     
     var hike: Hike?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     
     @IBAction func startHike(_ sender: UIBarButtonItem) {
         locationList.removeAll()
         mapView.removeOverlays(mapView.overlays)
+        
         initializeHikeTracking()
     }
     
@@ -54,7 +58,7 @@ class HikeViewController: UIViewController {
 //            self.saveHike()
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
-          self.stopHike()
+            self.stopHike()
           _ = self.navigationController?.popToRootViewController(animated: true)
         })
         
@@ -70,9 +74,11 @@ class HikeViewController: UIViewController {
         mapView.userTrackingMode = .follow
         mapView.showsCompass = true
         
+        netAltitude = 0
         seconds = 0
         distance = Measurement(value: 0, unit: UnitLength.meters)
         updateCurrentStats()
+        startTrackingAltitudeChanges()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.incrementSeconds()
         }
@@ -95,12 +101,32 @@ class HikeViewController: UIViewController {
     func updateCurrentStats() {
         let formattedDistance = FormatDisplay.distance(distance)
         let formattedTime = FormatDisplay.time(seconds)
-        //AveragePace
-        //let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds,             outputUnit: UnitSpeed.minutesPerMile)
-        //        paceLabel.text = "Pace:  \(formattedPace)"
+        
+        // Average pace
+        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+    
         distanceLabel.text = "Distance:  \(formattedDistance)"
         timeLabel.text = "Time:  \(formattedTime)"
      }
+    
+    func startTrackingAltitudeChanges() {
+        guard CMAltimeter.isRelativeAltitudeAvailable() else {
+            return
+        }
+        
+        let queue = OperationQueue()
+        queue.qualityOfService = .background
+        
+        altimeter.startRelativeAltitudeUpdates(to: queue) { (altimeterData, error) in
+            if let altimeterData = altimeterData {
+                DispatchQueue.main.sync {
+                    let relativeAltitude = altimeterData.relativeAltitude as! Double
+                    let roundedAltitude = Int16(relativeAltitude.rounded())
+                    self.hike?.net_elevation_gain = roundedAltitude
+                }
+            }
+        }
+    }
     
     func stopHike() {
         startButton.isEnabled = true
@@ -108,23 +134,28 @@ class HikeViewController: UIViewController {
         locationManager.stopUpdatingLocation()
     }
 
-//    func saveHike() {
-//        let newHike = Hike(context: CoreData.context)
-//        newHike.distance = distance.value
-//        newHike.duration = Int16(seconds)
-//        newHike.timestamp = Date()
+//    func save(name: String) {
 //
-//        for location in locationList {
-//            let locationObject = Location(context: CoreDataStack.context)
-//            locationObject.timestamp = location.timestamp
-//            locationObject.latitude = location.coordinate.latitude
-//            locationObject.longitude = location.coordinate.longitude
-//            newHike.addToLocations(locationObject)
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//
+//        // 1
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//
+//        // 2
+//        let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
+//
+//        let person = NSManagedObject(entity: entity, insertInto: managedContext)
+//
+//        // 3
+//        person.setValue(name, forKeyPath: "name")
+//
+//        // 4
+//        do {
+//            try managedContext.save()
+//            people.append(person)
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
 //        }
-//
-//        CoreData.saveContext()
-//
-//        hike = Hike
 //    }
 
 }
