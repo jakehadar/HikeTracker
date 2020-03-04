@@ -145,6 +145,29 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="507"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
+                            <button opaque="NO" alpha="0.66000000000000003" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXA-Rx-gti">
+                                <rect key="frame" x="323" y="136" width="36" height="36"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <state key="normal" image="Compass">
+                                    <attributedString key="attributedTitle"/>
+                                </state>
+                                <connections>
+                                    <action selector="compassButton:" destination="LG7-tS-HfP" eventType="touchUpInside" id="oer-0F-IWw"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xLx-EM-W9O">
+                                <rect key="frame" x="74" y="576" width="227" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.085059002829999994" green="0.63097520149999997" blue="0.098323041920000007" alpha="0.99978637699999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="indexChanged:" destination="LG7-tS-HfP" eventType="valueChanged" id="xw5-4T-WzX"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dz9-cd-FCp"/>
@@ -158,6 +181,7 @@
                         <outlet property="altitudeLabel" destination="SNB-Bb-nj3" id="MHS-eY-Crz"/>
                         <outlet property="cameraButton" destination="2gL-at-yQW" id="B28-7j-34p"/>
                         <outlet property="distanceLabel" destination="v0n-T7-8Ba" id="mgb-vx-bV4"/>
+                        <outlet property="mapTypeControl" destination="xLx-EM-W9O" id="cvj-IN-CGJ"/>
                         <outlet property="mapView" destination="hjv-Hd-Adf" id="4pP-0r-0mN"/>
                         <outlet property="paceLabel" destination="ERx-2J-mnD" id="t7B-Ab-YGv"/>
                         <outlet property="startButton" destination="78L-DX-zF2" id="3cW-4l-5JV"/>
@@ -170,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1tY-4Y-IEh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="466" y="24"/>
+            <point key="canvasLocation" x="464.80000000000001" y="23.838080959520241"/>
         </scene>
         <!--HikeTracker-->
         <scene sceneID="dBs-Ga-XWM">
@@ -216,7 +240,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="jcP-fp-mPo">
-                                <rect key="frame" x="30" y="257" width="318" height="373"/>
+                                <rect key="frame" x="30" y="257" width="318" height="365"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <view alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anV-Oa-k7O">
@@ -282,6 +306,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IAV-AV-GnR">
+                                <rect key="frame" x="76" y="567" width="227" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.085059002829999994" green="0.63097520149999997" blue="0.098323041920000007" alpha="0.99978637699999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="indexChanged:" destination="yla-kk-oFZ" eventType="valueChanged" id="8u9-B1-jUY"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="AdJ-6X-GhM"/>
@@ -290,6 +327,7 @@
                     <connections>
                         <outlet property="averagePaceLabel" destination="ANM-cv-83Z" id="lk7-BO-HRK"/>
                         <outlet property="distanceTravelledLabel" destination="LCh-DO-tr0" id="sdJ-Lu-FAp"/>
+                        <outlet property="mapTypeControl" destination="IAV-AV-GnR" id="mgT-RJ-gGM"/>
                         <outlet property="mapView" destination="jcP-fp-mPo" id="WQP-FS-K5t"/>
                         <outlet property="netAltitudeLabel" destination="sM6-ja-OFM" id="vbp-2b-lkt"/>
                         <outlet property="timeElapsedLabel" destination="7Hw-lL-FiO" id="CSb-w9-QTS"/>
@@ -301,6 +339,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Compass" width="512" height="512"/>
         <image name="LaunchBackground" width="288" height="512"/>
     </resources>
 </document>

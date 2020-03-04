@@ -25,6 +25,7 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
+    @IBOutlet weak var mapTypeControl: UISegmentedControl!
     
     private let locationManager = LocationManager.shared
     private let altimeter = CMAltimeter()
@@ -39,8 +40,6 @@ class HikeViewController: UIViewController {
     var distanceTravelled = Measurement(value: 0, unit: UnitLength.meters)
     var polylineCoordinates: [CLLocation] = []
     var elevationChange = 0
-    
-//    var hike: Hike?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,9 +108,6 @@ class HikeViewController: UIViewController {
         let formattedDistance = FormatDisplay.distance(distance)
         let formattedTime = FormatDisplay.time(seconds)
         
-//        Average pace
-//        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
-        
         distanceLabel.text = "Distance:  \(formattedDistance)"
         timeLabel.text = "Time:  \(formattedTime)"
         
@@ -144,7 +140,27 @@ class HikeViewController: UIViewController {
         stopButton.isEnabled = false
         locationManager.stopUpdatingLocation()
     }
+    
+    
+    @IBAction func compassButton(_ sender: Any) {
+        mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+    }
 
+    @IBAction func indexChanged(_ sender: Any) {
+        switch mapTypeControl.selectedSegmentIndex
+        {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .satellite
+        case 2:
+            mapView.mapType = .hybrid
+        default:
+            break
+        }
+    }
+    
+    
     
     @IBAction func showHikeStats(_ sender: UIBarButtonItem) {
         self.timeElapsed = seconds
@@ -155,6 +171,7 @@ class HikeViewController: UIViewController {
         performSegue(withIdentifier: "statSegue", sender: self)
     }
     
+    // Pass data to StatsViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! StatViewController
         vc.timeElapsed = self.timeElapsed
@@ -200,7 +217,7 @@ extension HikeViewController: MKMapViewDelegate {
         }
         let renderedLine = MKPolylineRenderer(polyline: polyline)
         renderedLine.strokeColor = .systemBlue
-        renderedLine.lineWidth = 3
+        renderedLine.lineWidth = 4
         return renderedLine
     }
 }

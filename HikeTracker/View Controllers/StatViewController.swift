@@ -16,6 +16,7 @@ class StatViewController: UIViewController {
     @IBOutlet weak var distanceTravelledLabel: UILabel!
     @IBOutlet weak var averagePaceLabel: UILabel!
     @IBOutlet weak var netAltitudeLabel: UILabel!
+    @IBOutlet weak var mapTypeControl: UISegmentedControl!
     @IBOutlet weak var mapView: MKMapView!
     
     var timeElapsed = 0
@@ -96,6 +97,21 @@ class StatViewController: UIViewController {
         mapView.addAnnotation(endLocation)
     }
     
+    @IBAction func indexChanged(_ sender: Any) {
+        switch mapTypeControl.selectedSegmentIndex
+        {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .satellite
+        case 2:
+            mapView.mapType = .hybrid
+        default:
+            break
+        }
+    }
+    
+    
 }
 
 extension StatViewController: MKMapViewDelegate {
@@ -105,7 +121,7 @@ extension StatViewController: MKMapViewDelegate {
         }
         let lineRenderer = MKPolylineRenderer(polyline: polyline)
         lineRenderer.strokeColor = .systemBlue
-        lineRenderer.lineWidth = 3
+        lineRenderer.lineWidth = 4
         return lineRenderer
     }
     
