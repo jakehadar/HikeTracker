@@ -39,7 +39,6 @@ class HikeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     
@@ -104,7 +103,7 @@ class HikeViewController: UIViewController {
         let formattedTime = FormatDisplay.time(seconds)
         
         // Average pace
-        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds,             outputUnit: UnitSpeed.minutesPerMile)
+        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
     
         distanceLabel.text = "Distance:  \(formattedDistance)"
         timeLabel.text = "Time:  \(formattedTime)"
@@ -122,7 +121,8 @@ class HikeViewController: UIViewController {
             if let altimeterData = altimeterData {
                 DispatchQueue.main.sync {
                     let relativeAltitude = altimeterData.relativeAltitude as! Double
-                    let roundedAltitude = Int(relativeAltitude.rounded())
+                    let roundedAltitude = Int16(relativeAltitude.rounded())
+                    self.hike?.net_elevation_gain = roundedAltitude
                 }
             }
         }
@@ -134,23 +134,28 @@ class HikeViewController: UIViewController {
         locationManager.stopUpdatingLocation()
     }
 
-//    func saveHike() {
-//        let newHike = Hike(context: CoreData.context)
-//        newHike.distance = distance.value
-//        newHike.duration = Int16(seconds)
-//        newHike.timestamp = Date()
+//    func save(name: String) {
 //
-//        for location in locationList {
-//            let locationObject = Location(context: CoreDataStack.context)
-//            locationObject.timestamp = location.timestamp
-//            locationObject.latitude = location.coordinate.latitude
-//            locationObject.longitude = location.coordinate.longitude
-//            newHike.addToLocations(locationObject)
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//
+//        // 1
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//
+//        // 2
+//        let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
+//
+//        let person = NSManagedObject(entity: entity, insertInto: managedContext)
+//
+//        // 3
+//        person.setValue(name, forKeyPath: "name")
+//
+//        // 4
+//        do {
+//            try managedContext.save()
+//            people.append(person)
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
 //        }
-//
-//        CoreData.saveContext()
-//
-//        hike = Hike
 //    }
 
 }
