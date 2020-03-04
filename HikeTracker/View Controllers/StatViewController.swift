@@ -48,6 +48,7 @@ class StatViewController: UIViewController {
         mapView.delegate = self
         mapView.setRegion(region!, animated: true)
         renderPolyline()
+        renderAnnotations()
     }
     
     func mapRegion() -> MKCoordinateRegion? {
@@ -79,6 +80,18 @@ class StatViewController: UIViewController {
         let hikePolyline = MKPolyline(coordinates: hikeCoordinates, count: hikeCoordinates.count)
         
         mapView.addOverlay(hikePolyline)
+    }
+    
+    func renderAnnotations() {
+        let startLocation = MKPointAnnotation()
+        startLocation.title = "Start"
+        startLocation.coordinate = polylineCoordinates.first!.coordinate
+        mapView.addAnnotation(startLocation)
+        
+        let endLocation = MKPointAnnotation()
+        endLocation.title = "End"
+        endLocation.coordinate = polylineCoordinates.last!.coordinate
+        mapView.addAnnotation(endLocation)
     }
     
 }

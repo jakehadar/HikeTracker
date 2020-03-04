@@ -40,7 +40,7 @@ class HikeViewController: UIViewController {
     var polylineCoordinates: [CLLocation] = []
     var elevationChange = 0
     
-    var hike: Hike?
+//    var hike: Hike?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +75,7 @@ class HikeViewController: UIViewController {
     func initializeHikeTracking() {
         startButton.isEnabled = false
         stopButton.isEnabled = true
+        statsButton.isEnabled = true
         
         mapView.delegate = self
         mapView.showsUserLocation = true
