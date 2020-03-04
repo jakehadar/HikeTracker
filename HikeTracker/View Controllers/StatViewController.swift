@@ -85,11 +85,13 @@ class StatViewController: UIViewController {
     func renderAnnotations() {
         let startLocation = MKPointAnnotation()
         startLocation.title = "Start"
+        startLocation.subtitle = "Start"
         startLocation.coordinate = polylineCoordinates.first!.coordinate
         mapView.addAnnotation(startLocation)
         
         let endLocation = MKPointAnnotation()
         endLocation.title = "End"
+        endLocation.subtitle = "End"
         endLocation.coordinate = polylineCoordinates.last!.coordinate
         mapView.addAnnotation(endLocation)
     }
@@ -106,4 +108,21 @@ extension StatViewController: MKMapViewDelegate {
         lineRenderer.lineWidth = 3
         return lineRenderer
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+
+        guard let annotationName = annotation.title else {return nil}
+
+
+        if annotationName == "Start" {
+            annotationView.pinTintColor = UIColor.green
+        } else if annotationName == "End" {
+            annotationView.pinTintColor = UIColor.red
+        }
+        return annotationView
+    }
 }
+
+
