@@ -26,22 +26,28 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     
-    let locationManager = LocationManager.shared
-    let altimeter = CMAltimeter()
-    var seconds = 0
-    var timer: Timer?
-    var distance = Measurement(value: 0, unit: UnitLength.meters)
-    var netAltitude = 0
-    var locationList: [CLLocation] = []
+    private let locationManager = LocationManager.shared
+    private let altimeter = CMAltimeter()
+    private var seconds = 0
+    private var timer: Timer?
+    private var distance = Measurement(value: 0, unit: UnitLength.meters)
+    private var netAltitude = 0
+    private var locationList: [CLLocation] = []
     
+    // Segue variables
+    var timeElapsed = 0
+    var distanceTravelled = Measurement(value: 0, unit: UnitLength.meters)
+    var polylineCoordinates: [CLLocation] = []
+    var elevationChange = 0
     
     var hike: Hike?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
-    
+    // Start button pressed (remove prior map details from any previous run and initialize new hike
     @IBAction func startHike(_ sender: UIBarButtonItem) {
         locationList.removeAll()
         mapView.removeOverlays(mapView.overlays)
@@ -49,6 +55,7 @@ class HikeViewController: UIViewController {
         initializeHikeTracking()
     }
     
+    // Stop button pressed
     @IBAction func stopHike(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Are you sure?",
                                                 message: "Do you wish to end your hike?",
@@ -72,17 +79,16 @@ class HikeViewController: UIViewController {
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
-        mapView.showsCompass = true
         
         netAltitude = 0
         seconds = 0
         distance = Measurement(value: 0, unit: UnitLength.meters)
-        updateCurrentStats()
-        startTrackingAltitudeChanges()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.incrementSeconds()
         }
+        
         initializeLocationManager()
+        updateCurrentStats()
     }
     
     func incrementSeconds() {
@@ -102,13 +108,17 @@ class HikeViewController: UIViewController {
         let formattedDistance = FormatDisplay.distance(distance)
         let formattedTime = FormatDisplay.time(seconds)
         
-        // Average pace
-        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
-    
+//        Average pace
+//        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+        
         distanceLabel.text = "Distance:  \(formattedDistance)"
         timeLabel.text = "Time:  \(formattedTime)"
+        
+        startTrackingAltitudeChanges()
      }
     
+    
+    // CoreMotion altitude changes
     func startTrackingAltitudeChanges() {
         guard CMAltimeter.isRelativeAltitudeAvailable() else {
             return
@@ -121,8 +131,8 @@ class HikeViewController: UIViewController {
             if let altimeterData = altimeterData {
                 DispatchQueue.main.sync {
                     let relativeAltitude = altimeterData.relativeAltitude as! Double
-                    let roundedAltitude = Int16(relativeAltitude.rounded())
-                    self.hike?.net_elevation_gain = roundedAltitude
+                    let roundedAltitude = Int(relativeAltitude.rounded())
+                    self.netAltitude = roundedAltitude
                 }
             }
         }
@@ -134,29 +144,24 @@ class HikeViewController: UIViewController {
         locationManager.stopUpdatingLocation()
     }
 
-//    func save(name: String) {
-//
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//
-//        // 1
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//
-//        // 2
-//        let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
-//
-//        let person = NSManagedObject(entity: entity, insertInto: managedContext)
-//
-//        // 3
-//        person.setValue(name, forKeyPath: "name")
-//
-//        // 4
-//        do {
-//            try managedContext.save()
-//            people.append(person)
-//        } catch let error as NSError {
-//            print("Could not save. \(error), \(error.userInfo)")
-//        }
-//    }
+    
+    @IBAction func showHikeStats(_ sender: UIBarButtonItem) {
+        self.timeElapsed = seconds
+        self.distanceTravelled = distance
+        self.polylineCoordinates = locationList
+        self.elevationChange = netAltitude
+        
+        performSegue(withIdentifier: "statSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! StatViewController
+        vc.timeElapsed = self.timeElapsed
+        vc.distanceTravelled = self.distanceTravelled
+        vc.polylineCoordinates = self.polylineCoordinates
+        vc.elevationChange = self.elevationChange
+    }
+    
 
 }
 
@@ -182,7 +187,6 @@ extension HikeViewController: CLLocationManagerDelegate {
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
                 mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
             }
-            
         locationList.append(newLocation)
         }
     }
@@ -199,6 +203,8 @@ extension HikeViewController: MKMapViewDelegate {
         return renderedLine
     }
 }
+
+
 
 
 
