@@ -257,6 +257,7 @@
                     <connections>
                         <outlet property="averagePaceLabel" destination="ANM-cv-83Z" id="lk7-BO-HRK"/>
                         <outlet property="distanceTravelledLabel" destination="LCh-DO-tr0" id="sdJ-Lu-FAp"/>
+                        <outlet property="mapView" destination="jcP-fp-mPo" id="WQP-FS-K5t"/>
                         <outlet property="netAltitudeLabel" destination="sM6-ja-OFM" id="vbp-2b-lkt"/>
                         <outlet property="timeElapsedLabel" destination="7Hw-lL-FiO" id="CSb-w9-QTS"/>
                     </connections>
