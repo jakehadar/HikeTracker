@@ -11,15 +11,12 @@ import CoreData
 
 class PastHikesViewController: UIViewController {
     
+    @IBOutlet weak var hikeTableView: UITableView!
+    
     var hikeArray: [NSManagedObject] = []
-    
 
-    @IBOutlet var labelTest: UILabel!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,14 +36,34 @@ class PastHikesViewController: UIViewController {
         } catch {
             print("Failed")
         }
-        loadData()
-    }
-    
-    func loadData() {
-        print("\(hikeArray)")
-         labelTest.text = "\(hikeArray[3].value(forKey: "duration") as! Int16)"
     }
 }
+
+
+extension PastHikesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                     numberOfRowsInSection section: Int) -> Int {
+        return hikeArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        
+        let hike = hikeArray[indexPath.row]
+        
+        let hikeDate = hike.value(forKey: "timestamp")
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HikeCell", for: indexPath)
+        cell.textLabel?.text = "\(hike.value(forKey: "name") ?? "Error")"
+        cell.detailTextLabel?.text = "\(dateFormatter.string(from: hikeDate as! Date))"
+        
+        
+        return cell
+    }
+}
+
+
 
 
 

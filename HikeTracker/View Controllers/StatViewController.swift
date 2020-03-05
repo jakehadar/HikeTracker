@@ -204,6 +204,7 @@ class StatViewController: UIViewController {
             locationData.setValue(location.timestamp, forKey: "timestamp")
             locationData.setValue(location.coordinate.longitude, forKey: "longitude")
             locationData.setValue(location.coordinate.latitude, forKey: "latitude")
+            locationData.setValue(NSSet(object: hikeData), forKey: "hikes")
         }
 
         do {

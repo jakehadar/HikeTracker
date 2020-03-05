@@ -7,13 +7,13 @@
         <attribute name="elevation_loss" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="locations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="hike" inverseEntity="Location"/>
+        <relationship name="locations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="hikes" inverseEntity="Location"/>
     </entity>
     <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="hike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hike" inverseName="locations" inverseEntity="Hike"/>
+        <relationship name="hikes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hike" inverseName="locations" inverseEntity="Hike"/>
     </entity>
     <elements>
         <element name="Hike" positionX="-63" positionY="-18" width="128" height="148"/>
