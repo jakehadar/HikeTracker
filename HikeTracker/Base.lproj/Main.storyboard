@@ -332,7 +332,7 @@
                                 </connections>
                             </segmentedControl>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="jcP-fp-mPo">
-                                <rect key="frame" x="30" y="278" width="318" height="350"/>
+                                <rect key="frame" x="30" y="278" width="318" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -341,8 +341,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Hike Stats" id="TzU-MB-war"/>
                     <connections>
-                        <outlet property="altitudeGain" destination="sM6-ja-OFM" id="zJq-uq-bV0"/>
-                        <outlet property="altitudeLoss" destination="us8-bn-lp8" id="6bZ-mp-IZa"/>
+                        <outlet property="altitudeGainLabel" destination="sM6-ja-OFM" id="WXn-Mm-0hV"/>
+                        <outlet property="altitudeLossLabel" destination="us8-bn-lp8" id="DZM-0i-TcJ"/>
                         <outlet property="averagePaceLabel" destination="ANM-cv-83Z" id="lk7-BO-HRK"/>
                         <outlet property="distanceTravelledLabel" destination="LCh-DO-tr0" id="sdJ-Lu-FAp"/>
                         <outlet property="mapTypeControl" destination="IAV-AV-GnR" id="mgT-RJ-gGM"/>
