@@ -297,9 +297,16 @@
                                     <barButtonItem title="Save Hike" springLoaded="YES" style="done" id="812-Cg-uN7">
                                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                         <color key="tintColor" red="0.085059002829999994" green="0.63097520149999997" blue="0.098323041920000007" alpha="0.99978637699999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="saveHike:" destination="yla-kk-oFZ" id="TUV-Yt-hfY"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rb4-ui-CeM"/>
-                                    <barButtonItem springLoaded="YES" systemItem="trash" id="uTz-14-wqe"/>
+                                    <barButtonItem springLoaded="YES" systemItem="trash" id="uTz-14-wqe">
+                                        <connections>
+                                            <action selector="discardHike:" destination="yla-kk-oFZ" id="JCM-qg-WNG"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
