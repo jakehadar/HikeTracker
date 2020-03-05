@@ -11,16 +11,15 @@ import CoreData
 
 class PastHikesViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    var hikeArray: [NSManagedObject] = []
     
-    @IBOutlet weak var testCell: UITableViewCell!
-    var hikeNameArray = [String]()
+
+    @IBOutlet var labelTest: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Past Hikes"
-        tableView.register(UITableViewCell.self,
-                           forCellReuseIdentifier: "Cell")
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,27 +34,20 @@ class PastHikesViewController: UIViewController {
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
-                hikeNameArray.append(data.value(forKey: "name") as! String)
+                hikeArray.append(data)
             }
-                   
-            } catch {
-                   
+        } catch {
             print("Failed")
         }
+        loadData()
+    }
+    
+    func loadData() {
+        print("\(hikeArray)")
+         labelTest.text = "\(hikeArray[3].value(forKey: "duration") as! Int16)"
     }
 }
 
 
 
-extension PastHikesViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hikeNameArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = hikeNameArray[indexPath.row]
-        return cell
-    }
-}
