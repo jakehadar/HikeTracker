@@ -37,7 +37,6 @@ class StatViewController: UIViewController {
     var elevationGain = Int16()
     var elevationLoss = Int16()
     var date = Date()
-    var locationList: [CLLocation] = []
     
     
     override func viewDidLoad() {
@@ -195,8 +194,17 @@ class StatViewController: UIViewController {
         hikeData.setValue(duration, forKey: "duration")
         hikeData.setValue(elevationGain, forKey: "elevation_gain")
         hikeData.setValue(elevationLoss, forKey: "elevation_loss")
-        hikeData.setValue(locationList, forKey: "locationList")
         hikeData.setValue(date, forKey: "timestamp")
+        
+        let locationEntity = NSEntityDescription.entity(forEntityName: "Location", in: managedContext)!
+        
+        let locationData = NSManagedObject(entity: locationEntity, insertInto: managedContext)
+        
+        for location in polylineCoordinates {
+            locationData.setValue(location.timestamp, forKey: "timestamp")
+            locationData.setValue(location.coordinate.longitude, forKey: "longitude")
+            locationData.setValue(location.coordinate.latitude, forKey: "latitude")
+        }
 
         do {
             try managedContext.save()
