@@ -61,6 +61,10 @@ extension PastHikesViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentefier: "PastHikeDetailViewController") as? PastHikeDetailViewController
+    }
 }
 
 
