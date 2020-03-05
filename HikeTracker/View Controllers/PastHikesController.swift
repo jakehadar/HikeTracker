@@ -40,9 +40,8 @@ class PastHikesViewController: UIViewController {
 }
 
 
-extension PastHikesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                     numberOfRowsInSection section: Int) -> Int {
+extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hikeArray.count
     }
 
@@ -62,9 +61,20 @@ extension PastHikesViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentefier: "PastHikeDetailViewController") as? PastHikeDetailViewController
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "PastHikeDetailViewController") as? PastHikeDetailViewController
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+//        
+//        
+//        let hike = hikeArray[indexPath.row]
+//        vc?.pastHikeTitle = hike.value(forKey: "name") as! String
+//        vc?.pastHikeDate = (dateFormatter.string(from: hike.value(forKey: "timestamp") as! Date))
+//        vc?.pastHikeDuration = hike.value(forKey: "duration") as! Int
+//        vc?.pastHikeAltGain = hike.value(forKey: "elevation_gain") as! Int
+//        vc?.pastHikeAltLoss = hike.value(forKey: "elevation_loss") as! Int
+//    }
 }
 
 
