@@ -31,15 +31,17 @@ class HikeViewController: UIViewController {
     private let altimeter = CMAltimeter()
     private var seconds = 0
     private var timer: Timer?
+    private var altGain = 0
+    private var altLoss = 0
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
-    private var netAltitude = 0
     private var locationList: [CLLocation] = []
     
     // Segue variables
     var timeElapsed = 0
     var distanceTravelled = Measurement(value: 0, unit: UnitLength.meters)
     var polylineCoordinates: [CLLocation] = []
-    var elevationChange = 0
+    var gain = 0
+    var loss = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +82,8 @@ class HikeViewController: UIViewController {
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         
-        netAltitude = 0
+        altGain = 0
+        altLoss = 0
         seconds = 0
         distance = Measurement(value: 0, unit: UnitLength.meters)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -129,7 +132,11 @@ class HikeViewController: UIViewController {
                 DispatchQueue.main.sync {
                     let relativeAltitude = altimeterData.relativeAltitude as! Double
                     let roundedAltitude = Int(relativeAltitude.rounded())
-                    self.netAltitude = roundedAltitude
+                    if roundedAltitude > 0 {
+                        self.altGain += roundedAltitude
+                    } else {
+                        self.altLoss += roundedAltitude
+                    }
                 }
             }
         }
@@ -166,7 +173,8 @@ class HikeViewController: UIViewController {
         self.timeElapsed = seconds
         self.distanceTravelled = distance
         self.polylineCoordinates = locationList
-        self.elevationChange = netAltitude
+        self.gain = altGain
+        self.loss = altLoss
         
         performSegue(withIdentifier: "statSegue", sender: self)
     }
@@ -177,7 +185,8 @@ class HikeViewController: UIViewController {
         vc.timeElapsed = self.timeElapsed
         vc.distanceTravelled = self.distanceTravelled
         vc.polylineCoordinates = self.polylineCoordinates
-        vc.elevationChange = self.elevationChange
+        vc.altitudeGain = self.gain
+        vc.altitudeLoss = self.loss
     }
     
 

@@ -15,14 +15,16 @@ class StatViewController: UIViewController {
     @IBOutlet weak var timeElapsedLabel: UILabel!
     @IBOutlet weak var distanceTravelledLabel: UILabel!
     @IBOutlet weak var averagePaceLabel: UILabel!
-    @IBOutlet weak var netAltitudeLabel: UILabel!
+    @IBOutlet weak var altitudeGainLabel: UILabel!
+    @IBOutlet weak var altitudeLossLabel: UILabel!
     @IBOutlet weak var mapTypeControl: UISegmentedControl!
     @IBOutlet weak var mapView: MKMapView!
     
     var timeElapsed = 0
     var distanceTravelled = Measurement(value: 0, unit: UnitLength.meters)
     var polylineCoordinates: [CLLocation] = []
-    var elevationChange = 0
+    var altitudeGain = 0
+    var altitudeLoss = 0
     
     
     override func viewDidLoad() {
@@ -38,7 +40,8 @@ class StatViewController: UIViewController {
         timeElapsedLabel.text = "\(formattedTime)"
         distanceTravelledLabel.text = "\(formattedDistance)"
         averagePaceLabel.text = "\(formattedPace)"
-        netAltitudeLabel.text = "\(elevationChange)"
+        altitudeGainLabel.text = "\(altitudeGain)"
+        altitudeLossLabel.text = "\(altitudeLoss)"
         
         loadMap()
     }
