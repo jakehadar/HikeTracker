@@ -27,6 +27,7 @@ class HikeViewController: UIViewController {
     @IBOutlet weak var altitudeLabel: UILabel!
     @IBOutlet weak var mapTypeControl: UISegmentedControl!
     
+    // Stat variable declarations
     private let locationManager = LocationManager.shared
     private let altimeter = CMAltimeter()
     private var seconds = 0
@@ -42,6 +43,7 @@ class HikeViewController: UIViewController {
     var polylineCoordinates: [CLLocation] = []
     var gain = 0
     var loss = 0
+    var hikeFinished = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,10 +64,10 @@ class HikeViewController: UIViewController {
                                                 message: "Do you wish to end your hike?",
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in self.stopHike()
-//            self.saveHike()
+        alertController.addAction(UIAlertAction(title: "Save Hike", style: .default) { _ in self.stopHike()
+            self.performSegueAction()
         })
-        alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
+        alertController.addAction(UIAlertAction(title: "Discard Hike", style: .destructive) { _ in
             self.stopHike()
           _ = self.navigationController?.popToRootViewController(animated: true)
         })
@@ -145,6 +147,9 @@ class HikeViewController: UIViewController {
     func stopHike() {
         startButton.isEnabled = true
         stopButton.isEnabled = false
+        mapView.showsUserLocation = false
+        mapView.userTrackingMode = .none
+        hikeFinished = true
         locationManager.stopUpdatingLocation()
     }
     
@@ -167,19 +172,22 @@ class HikeViewController: UIViewController {
         }
     }
     
-    
-    
+    // Initialize segue data to StatsViewController
     @IBAction func showHikeStats(_ sender: UIBarButtonItem) {
+        performSegueAction()
+    }
+    
+    func performSegueAction() {
         self.timeElapsed = seconds
         self.distanceTravelled = distance
         self.polylineCoordinates = locationList
         self.gain = altGain
         self.loss = altLoss
-        
+               
         performSegue(withIdentifier: "statSegue", sender: self)
     }
     
-    // Pass data to StatsViewController
+    // Segue to StatsViewController or FinishedViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! StatViewController
         vc.timeElapsed = self.timeElapsed
@@ -187,8 +195,8 @@ class HikeViewController: UIViewController {
         vc.polylineCoordinates = self.polylineCoordinates
         vc.altitudeGain = self.gain
         vc.altitudeLoss = self.loss
+        vc.hikeComplete = self.hikeFinished
     }
-    
 
 }
 
