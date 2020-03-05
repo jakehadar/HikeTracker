@@ -13,7 +13,8 @@ class PastHikesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var hikeNames: [NSManagedObject] = []
+    @IBOutlet weak var testCell: UITableViewCell!
+    var hikeNameArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class PastHikesViewController: UIViewController {
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "timestamp") as! Date)
+                hikeNameArray.append(data.value(forKey: "name") as! String)
             }
                    
             } catch {
@@ -46,16 +47,15 @@ class PastHikesViewController: UIViewController {
 
 
 
-//extension PastHikesViewController: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return hikeNames.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell =
-//        tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        cell.textLabel?.text = hikeNames[indexPath.row]
-//        return cell
-//    }
-//}
+extension PastHikesViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return hikeNameArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = hikeNameArray[indexPath.row]
+        return cell
+    }
+}
