@@ -59,6 +59,9 @@
                                 <state key="normal" title="Past Hikes">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="awj-on-o37" kind="show" id="rnH-hZ-5mP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -69,6 +72,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mH-a3-vvs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-428" y="23.838080959520241"/>
+        </scene>
+        <!--Past Hikes-->
+        <scene sceneID="I4K-dF-vdI">
+            <objects>
+                <viewController id="awj-on-o37" customClass="PastHikesViewController" customModule="HikeTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5NH-1d-tfD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fIF-DL-fFT">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4RK-QN-Jo3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Past Hikes" id="a3r-Sa-Yd6"/>
+                    <connections>
+                        <outlet property="tableView" destination="fIF-DL-fFT" id="VXf-Wf-iVp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeB-Fw-63o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-428" y="814.54272863568224"/>
         </scene>
         <!--HikeTracker-->
         <scene sceneID="FRd-US-yPE">

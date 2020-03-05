@@ -19,6 +19,7 @@
 		9A2F907F240DABBC00B4C180 /* UnitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F907E240DABBC00B4C180 /* UnitExtensions.swift */; };
 		9A2F9081240DAC4000B4C180 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9080240DAC4000B4C180 /* FormatDisplay.swift */; };
 		9A2F9083240DAD5600B4C180 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9082240DAD5600B4C180 /* LocationManager.swift */; };
+		9A2F90902410DB3600B4C180 /* PastHikesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F908F2410DB3600B4C180 /* PastHikesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		9A2F907E240DABBC00B4C180 /* UnitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtensions.swift; sourceTree = "<group>"; };
 		9A2F9080240DAC4000B4C180 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 		9A2F9082240DAD5600B4C180 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9A2F908F2410DB3600B4C180 /* PastHikesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastHikesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				9A2F90732409D00000B4C180 /* HomeViewController.swift */,
 				9A2F90752409D02500B4C180 /* HikeViewController.swift */,
 				9A2F90772409D03B00B4C180 /* StatViewController.swift */,
+				9A2F908F2410DB3600B4C180 /* PastHikesController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				9A2F905C2409C8C700B4C180 /* AppDelegate.swift in Sources */,
 				9A2F90762409D02500B4C180 /* HikeViewController.swift in Sources */,
 				9A2F905E2409C8C700B4C180 /* SceneDelegate.swift in Sources */,
+				9A2F90902410DB3600B4C180 /* PastHikesController.swift in Sources */,
 				9A2F90782409D03B00B4C180 /* StatViewController.swift in Sources */,
 				9A2F9081240DAC4000B4C180 /* FormatDisplay.swift in Sources */,
 				9A2F907F240DABBC00B4C180 /* UnitExtensions.swift in Sources */,

@@ -208,6 +208,7 @@ class StatViewController: UIViewController {
 
         do {
             try managedContext.save()
+            _ = self.navigationController?.popToRootViewController(animated: true)
            
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
