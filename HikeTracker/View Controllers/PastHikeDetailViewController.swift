@@ -21,6 +21,8 @@ class PastHikeDetailViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deleteHikeButton: UIToolbar!
     
+    var selectedRow = 0
+//    let selectedHikeArray = [NSArray] = []
     var pastHikeTitle = ""
     var pastHikeDate = ""
     var pastHikeDuration = 0

@@ -14,6 +14,7 @@ class PastHikesViewController: UIViewController {
     @IBOutlet weak var hikeTableView: UITableView!
     
     var hikeArray: [NSManagedObject] = []
+    var selectedRowIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,22 +61,22 @@ extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let vc = segue.destination as! PastHikeDetailViewController
+//        
+//        vc.selectedHikeArray = self.hikeArray
+//        vc.selectedRow = self.selectedRowIndex
+//    }
+//    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "PastHikeDetailViewController") as? PastHikeDetailViewController
+//        self.performSegue(withIdentifier: "pastHikeStatSegue", sender: indexPath)
 //        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
-//        
-//        
-//        let hike = hikeArray[indexPath.row]
-//        vc?.pastHikeTitle = hike.value(forKey: "name") as! String
-//        vc?.pastHikeDate = (dateFormatter.string(from: hike.value(forKey: "timestamp") as! Date))
-//        vc?.pastHikeDuration = hike.value(forKey: "duration") as! Int
-//        vc?.pastHikeAltGain = hike.value(forKey: "elevation_gain") as! Int
-//        vc?.pastHikeAltLoss = hike.value(forKey: "elevation_loss") as! Int
+//        selectedRowIndex = indexPath.row
 //    }
 }
+
+
 
 
 

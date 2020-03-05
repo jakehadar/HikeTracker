@@ -120,6 +120,7 @@
                     <navigationItem key="navigationItem" title="Past Hikes" id="a3r-Sa-Yd6"/>
                     <connections>
                         <outlet property="hikeTableView" destination="Pbc-jd-CGg" id="HyN-Lc-vM6"/>
+                        <segue destination="SKV-eO-riH" kind="show" identifier="pastHikeStatSegue" id="Yh8-jr-p4M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeB-Fw-63o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
