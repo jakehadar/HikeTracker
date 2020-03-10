@@ -61,19 +61,6 @@ extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let vc = segue.destination as! PastHikeDetailViewController
-//        
-//        vc.selectedHikeArray = self.hikeArray
-//        vc.selectedRow = self.selectedRowIndex
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "pastHikeStatSegue", sender: indexPath)
-//        
-//        selectedRowIndex = indexPath.row
-//    }
 }
 
 

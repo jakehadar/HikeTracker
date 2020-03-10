@@ -218,7 +218,7 @@
                                 <color key="textColor" red="0.085059002829999994" green="0.63097520149999997" blue="0.098323041920000007" alpha="0.99978637699999995" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OD4-G2-Fml">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OD4-G2-Fml">
                                 <rect key="frame" x="27" y="306" width="317" height="282"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
@@ -333,7 +333,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="hjv-Hd-Adf">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsCompass="NO" id="hjv-Hd-Adf">
                                 <rect key="frame" x="0.0" y="116" width="375" height="507"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
@@ -414,7 +414,7 @@
                                     <action selector="indexChanged:" destination="yla-kk-oFZ" eventType="valueChanged" id="8u9-B1-jUY"/>
                                 </connections>
                             </segmentedControl>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="jcP-fp-mPo">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsCompass="NO" id="jcP-fp-mPo">
                                 <rect key="frame" x="30" y="278" width="318" height="265"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
