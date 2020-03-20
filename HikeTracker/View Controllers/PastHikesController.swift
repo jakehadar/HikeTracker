@@ -13,7 +13,7 @@ class PastHikesViewController: UIViewController {
     
     @IBOutlet weak var hikeTableView: UITableView!
     
-    var hikeArray: [NSManagedObject] = []
+    var hikeArray = [NSManagedObject]()
     var selectedRowIndex = 0
 
     override func viewDidLoad() {
@@ -27,12 +27,12 @@ class PastHikesViewController: UIViewController {
       
         let managedContext = appDelegate.persistentContainer.viewContext
       
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Hike")
+        let fetchRequest = NSFetchRequest<Hike>(entityName: "Hike")
       
         do {
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                hikeArray.append(data)
+            let fetchedHikes = try managedContext.fetch(fetchRequest)
+            for fetchedHike in fetchedHikes {
+                hikeArray.append(fetchedHike as NSManagedObject)
             }
         } catch {
             print("Failed")
@@ -58,9 +58,9 @@ extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = "\(hike.value(forKey: "name") ?? "Error")"
         cell.detailTextLabel?.text = "\(dateFormatter.string(from: hikeDate as! Date))"
         
-        
         return cell
     }
+    
 }
 
 
