@@ -1,5 +1,5 @@
 # HikeTracker
-An iOS hike tracker for recording, measuring, and saving hikes you have gone on.
+An iOS hike tracker for recording, measuring, and saving the user's hikes.
 
 HikeTracker is a native iOS app that uses CoreMotion, CoreData, and MapKit to track, measure, and record the user's location, speed, and elevation changes during a hike. As the user moves, a polyline is rendered to show where they have travelled, and they can access more information regarding their hike via "Hike Stats". The user can also change the map view as desired. Once finished the user can save or discard their hike and corresponding stats. 
 
