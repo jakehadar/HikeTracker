@@ -49,18 +49,13 @@ extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
-        
         let hike = hikeArray[indexPath.row]
-        
         let hikeDate = hike.value(forKey: "timestamp")
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HikeCell", for: indexPath)
         cell.textLabel?.text = "\(hike.value(forKey: "name") ?? "Error")"
         cell.detailTextLabel?.text = "\(dateFormatter.string(from: hikeDate as! Date))"
-        
         return cell
     }
-    
 }
 
 
