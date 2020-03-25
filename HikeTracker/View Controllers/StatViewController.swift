@@ -88,8 +88,8 @@ class StatViewController: UIViewController {
 
         let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
                                           longitude: (minLon + maxLon) / 2)
-        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.3,
-                                  longitudeDelta: (maxLon - minLon) * 1.3)
+        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.5,
+                                  longitudeDelta: (maxLon - minLon) * 1.5)
         return MKCoordinateRegion(center: center, span: span)
     }
     
@@ -204,6 +204,7 @@ class StatViewController: UIViewController {
             locationData.setValue(location.timestamp, forKey: "timestamp")
             locationData.setValue(location.coordinate.longitude, forKey: "longitude")
             locationData.setValue(location.coordinate.latitude, forKey: "latitude")
+            locationData.setValue(NSSet(object: hikeData), forKey: "hikes")
         }
 
         do {

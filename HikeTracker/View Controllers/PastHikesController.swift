@@ -11,15 +11,13 @@ import CoreData
 
 class PastHikesViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var hikeTableView: UITableView!
     
-    var hikeNames: [NSManagedObject] = []
-    
+    var hikeArray = [NSManagedObject]()
+    var selectedRowIndex = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Past Hikes"
-        tableView.register(UITableViewCell.self,
-                           forCellReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,33 +27,46 @@ class PastHikesViewController: UIViewController {
       
         let managedContext = appDelegate.persistentContainer.viewContext
       
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Hike")
+        let fetchRequest = NSFetchRequest<Hike>(entityName: "Hike")
       
         do {
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "timestamp") as! Date)
+            let fetchedHikes = try managedContext.fetch(fetchRequest)
+            for fetchedHike in fetchedHikes {
+                hikeArray.append(fetchedHike as NSManagedObject)
             }
-                   
-            } catch {
-                   
+        } catch {
             print("Failed")
         }
     }
 }
 
 
+extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return hikeArray.count
+    }
 
-//extension PastHikesViewController: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return hikeNames.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell =
-//        tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        cell.textLabel?.text = hikeNames[indexPath.row]
-//        return cell
-//    }
-//}
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        
+        let hike = hikeArray[indexPath.row]
+        
+        let hikeDate = hike.value(forKey: "timestamp")
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HikeCell", for: indexPath)
+        cell.textLabel?.text = "\(hike.value(forKey: "name") ?? "Error")"
+        cell.detailTextLabel?.text = "\(dateFormatter.string(from: hikeDate as! Date))"
+        
+        return cell
+    }
+    
+}
+
+
+
+
+
+
+
+
