@@ -14,8 +14,7 @@ class PastHikesViewController: UIViewController {
     @IBOutlet weak var hikeTableView: UITableView!
     
     var hikeArray = [NSManagedObject]()
-    var selectedRowIndex = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,11 +36,17 @@ class PastHikesViewController: UIViewController {
         } catch {
             print("Failed")
         }
+        
+        // Clear last selection
+        if let indexPath = hikeTableView.indexPathForSelectedRow {
+            hikeTableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! PastHikeDetailViewController
-        let hike = hikeArray[selectedRowIndex]
+        let indexPath = hikeTableView.indexPathForSelectedRow!
+        let hike = hikeArray[indexPath.row]
         vc.hike = hike
     }
 }
@@ -61,11 +66,6 @@ extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = "\(hike.value(forKey: "name") ?? "Error")"
         cell.detailTextLabel?.text = "\(dateFormatter.string(from: hikeDate as! Date))"
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        selectedRowIndex = indexPath.row
-        return indexPath
     }
 }
 
