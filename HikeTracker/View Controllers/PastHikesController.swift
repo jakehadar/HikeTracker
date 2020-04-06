@@ -14,8 +14,7 @@ class PastHikesViewController: UIViewController {
     @IBOutlet weak var hikeTableView: UITableView!
     
     var hikeArray = [NSManagedObject]()
-    var selectedRowIndex = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,6 +36,18 @@ class PastHikesViewController: UIViewController {
         } catch {
             print("Failed")
         }
+        
+        // Clear last selection
+        if let indexPath = hikeTableView.indexPathForSelectedRow {
+            hikeTableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! PastHikeDetailViewController
+        let indexPath = hikeTableView.indexPathForSelectedRow!
+        let hike = hikeArray[indexPath.row]
+        vc.hike = hike
     }
 }
 
