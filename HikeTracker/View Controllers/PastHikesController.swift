@@ -38,6 +38,12 @@ class PastHikesViewController: UIViewController {
             print("Failed")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! PastHikeDetailViewController
+        let hike = hikeArray[selectedRowIndex]
+        vc.hike = hike
+    }
 }
 
 
@@ -55,6 +61,11 @@ extension PastHikesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = "\(hike.value(forKey: "name") ?? "Error")"
         cell.detailTextLabel?.text = "\(dateFormatter.string(from: hikeDate as! Date))"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedRowIndex = indexPath.row
+        return indexPath
     }
 }
 

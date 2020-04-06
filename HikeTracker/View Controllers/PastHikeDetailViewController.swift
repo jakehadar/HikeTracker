@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class PastHikeDetailViewController: UIViewController {
     
@@ -15,23 +16,34 @@ class PastHikeDetailViewController: UIViewController {
     @IBOutlet weak var hikeDate: UILabel!
     @IBOutlet weak var totalTime: UILabel!
     @IBOutlet weak var totalDistance: UILabel!
-    @IBOutlet weak var averagePace: UILabel!
+    @IBOutlet weak var averagePace: UILabel! 
     @IBOutlet weak var totalAltitudeGained: UILabel!
     @IBOutlet weak var totalAltitudeLost: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deleteHikeButton: UIToolbar!
     
-    var selectedRow = 0
-//    let selectedHikeArray = [NSArray] = []
-    var pastHikeTitle = ""
-    var pastHikeDate = ""
-    var pastHikeDuration = 0
-    var pastHikeDistance = 0.0
-    var pastHikeAltGain = 0
-    var pastHikeAltLoss = 0
-    var pastHikeCoordinates: [CLLocation] = []
+    let dateFormatter = DateFormatter()
+    
+    var hike: NSManagedObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let hike = hike {
+            hikeTitle.text = "\(hike.value(forKey: "name") as! String)"
+            hikeDate.text = dateFormatter.string(from: hike.value(forKey: "timestamp") as! Date)
+            totalTime.text = "\(hike.value(forKey: "duration") as! Int)"
+            totalDistance.text = "\(hike.value(forKey: "distance") as! Double)"
+            averagePace.text = ""  // TODO: math
+            totalAltitudeGained.text = "\(hike.value(forKey: "elevation_gain") as! Int)"
+            totalAltitudeLost.text = "\(hike.value(forKey: "elevation_loss") as! Int)"
+            // TODO: configure vc.mapView
+        }
     }
 }
