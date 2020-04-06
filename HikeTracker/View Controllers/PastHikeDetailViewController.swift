@@ -24,7 +24,7 @@ class PastHikeDetailViewController: UIViewController {
     
     let dateFormatter = DateFormatter()
     
-    var hike: NSManagedObject?
+    weak var hike: NSManagedObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
