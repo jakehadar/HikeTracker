@@ -14,17 +14,31 @@ class PastHikeDetailViewController: UIViewController {
     
     @IBOutlet weak var hikeTitle: UILabel!
     @IBOutlet weak var hikeDate: UILabel!
-    @IBOutlet weak var totalTime: UILabel!
-    @IBOutlet weak var totalDistance: UILabel!
-    @IBOutlet weak var averagePace: UILabel! 
-    @IBOutlet weak var totalAltitudeGained: UILabel!
-    @IBOutlet weak var totalAltitudeLost: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deleteHikeButton: UIToolbar!
+    
+    @IBOutlet weak var detailsTableView: UITableView!
     
     let dateFormatter = DateFormatter()
     
     weak var hike: NSManagedObject?
+    
+    lazy var hikeDetails: Array<Array<String>> = {
+        guard let hike = hike else { fatalError() }
+        let duration = hike.value(forKey: "duration") as! Double
+        let distance = hike.value(forKey: "distance") as! Double
+        let averPace = distance / duration
+        let elevGain = hike.value(forKey: "elevation_gain") as! Int
+        let elevLoss = hike.value(forKey: "elevation_loss") as! Int
+        let data = [
+            ["Total Time:", "\(duration)"],
+            ["Distance Travelled:", "\(distance)"],
+            ["Average Pace", "\(averPace)"],
+            ["Total Altitude Gain", "\(elevGain)"],
+            ["Total Altitude Loss", "\(elevLoss)"]
+        ]
+        return data
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +49,27 @@ class PastHikeDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        detailsTableView.dataSource = self
+        
         if let hike = hike {
             hikeTitle.text = "\(hike.value(forKey: "name") as! String)"
             hikeDate.text = dateFormatter.string(from: hike.value(forKey: "timestamp") as! Date)
-            totalTime.text = "\(hike.value(forKey: "duration") as! Int)"
-            totalDistance.text = "\(hike.value(forKey: "distance") as! Double)"
-            averagePace.text = ""  // TODO: math
-            totalAltitudeGained.text = "\(hike.value(forKey: "elevation_gain") as! Int)"
-            totalAltitudeLost.text = "\(hike.value(forKey: "elevation_loss") as! Int)"
             // TODO: configure vc.mapView
         }
+    }
+}
+
+extension PastHikeDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard tableView == detailsTableView else { fatalError() }
+        return hikeDetails.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard tableView == detailsTableView else { fatalError() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as! DetailListTableViewCell
+        cell.title.text = hikeDetails[indexPath.row][0]
+        cell.value.text = hikeDetails[indexPath.row][1]
+        return cell
     }
 }

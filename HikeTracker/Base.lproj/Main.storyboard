@@ -136,83 +136,6 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XjW-NO-VjG">
-                                <rect key="frame" x="27" y="126" width="317" height="157"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsQ-2r-4tD">
-                                        <rect key="frame" x="8" y="9" width="97" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance Travelled:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEI-62-804">
-                                        <rect key="frame" x="8" y="39" width="174" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average Pace:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMq-5A-qO3">
-                                        <rect key="frame" x="8" y="69" width="120" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Altitude Gain:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQQ-kM-JUu">
-                                        <rect key="frame" x="8" y="99" width="178" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Altitude Loss:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otc-rM-P2P">
-                                        <rect key="frame" x="8" y="129" width="179" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A                  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSj-1y-Q0r">
-                                        <rect key="frame" x="200" y="9" width="117" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A                  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twg-Ug-BhI">
-                                        <rect key="frame" x="200" y="39" width="117" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A                  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZg-iH-Ryo">
-                                        <rect key="frame" x="200" y="69" width="117" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A                  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb7-Qm-TFb">
-                                        <rect key="frame" x="200" y="99" width="117" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A                  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT8-Pc-btx">
-                                        <rect key="frame" x="200" y="129" width="117" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="4MF-fE-qmr">
                                 <rect key="frame" x="20" y="64" width="335" height="44"/>
                                 <subviews>
@@ -246,26 +169,79 @@
                                 </items>
                                 <color key="barTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZGi-NV-F9t">
+                                <rect key="frame" x="20" y="128" width="335" height="151"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="28" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U4a-cx-UzI">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="151"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="151" id="81H-2n-7AX"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="11" reuseIdentifier="detailCell" id="dHp-EZ-bg3" customClass="DetailListTableViewCell" customModule="HikeTracker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="335" height="28"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.75" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dHp-EZ-bg3" id="zv5-uZ-OJB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="4g9-Tw-WMf">
+                                                            <rect key="frame" x="15" y="5.5" width="320" height="17.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSd-Oo-fND">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="17.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="175" id="f9o-hR-vCd"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A                  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW1-ZI-62p">
+                                                                    <rect key="frame" x="206" y="0.0" width="114" height="17.5"/>
+                                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="4g9-Tw-WMf" secondAttribute="trailing" id="RGc-eV-9x5"/>
+                                                        <constraint firstItem="4g9-Tw-WMf" firstAttribute="centerY" secondItem="zv5-uZ-OJB" secondAttribute="centerY" id="fPE-nd-6MG"/>
+                                                        <constraint firstItem="4g9-Tw-WMf" firstAttribute="leading" secondItem="zv5-uZ-OJB" secondAttribute="leadingMargin" id="kkP-OE-H7Y"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="title" destination="MSd-Oo-fND" id="Nul-Yz-PGn"/>
+                                                    <outlet property="value" destination="rW1-ZI-62p" id="YKF-Px-zaa"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ZGi-NV-F9t" firstAttribute="top" secondItem="4MF-fE-qmr" secondAttribute="bottom" constant="20" id="5BD-CF-NoK"/>
                             <constraint firstItem="4MF-fE-qmr" firstAttribute="leading" secondItem="gid-lx-7xc" secondAttribute="leading" constant="20" id="GWX-db-Ya2"/>
+                            <constraint firstItem="ZGi-NV-F9t" firstAttribute="leading" secondItem="gid-lx-7xc" secondAttribute="leading" constant="20" id="lfm-13-2dN"/>
                             <constraint firstItem="gid-lx-7xc" firstAttribute="trailing" secondItem="4MF-fE-qmr" secondAttribute="trailing" constant="20" id="t1M-e1-0F4"/>
+                            <constraint firstItem="gid-lx-7xc" firstAttribute="trailing" secondItem="ZGi-NV-F9t" secondAttribute="trailing" constant="20" id="zBb-5f-sZ5"/>
                             <constraint firstItem="4MF-fE-qmr" firstAttribute="top" secondItem="gid-lx-7xc" secondAttribute="top" constant="20" id="zTD-CO-xCZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gid-lx-7xc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Past Hike" id="Wgs-sI-qq7"/>
                     <connections>
-                        <outlet property="averagePace" destination="TZg-iH-Ryo" id="aBO-az-Q3u"/>
                         <outlet property="deleteHikeButton" destination="8hG-9z-Ris" id="DOe-1K-g7Q"/>
+                        <outlet property="detailsTableView" destination="U4a-cx-UzI" id="QUC-wy-MA8"/>
                         <outlet property="hikeDate" destination="IzP-85-xow" id="TZq-aK-GFX"/>
                         <outlet property="hikeTitle" destination="b8V-WE-gAC" id="WE9-6l-iIo"/>
                         <outlet property="mapView" destination="OD4-G2-Fml" id="0zB-sS-2tR"/>
-                        <outlet property="totalAltitudeGained" destination="Fb7-Qm-TFb" id="ACU-OH-ILA"/>
-                        <outlet property="totalAltitudeLost" destination="aT8-Pc-btx" id="ugS-RA-NFB"/>
-                        <outlet property="totalDistance" destination="Twg-Ug-BhI" id="SXB-eQ-VXj"/>
-                        <outlet property="totalTime" destination="qSj-1y-Q0r" id="EQE-gS-lbv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q65-ce-5XH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -280,6 +256,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-Hd-Adf">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                            </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Ucl-gS-HGI">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -308,9 +287,8 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="47d-45-3an"/>
                                 </items>
                             </toolbar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWb-k0-VNQ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWb-k0-VNQ">
                                 <rect key="frame" x="0.0" y="44" width="375" height="72"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Altitude:                     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNB-Bb-nj3" userLabel="Altitude Label">
                                         <rect key="frame" x="189" y="40" width="186" height="35"/>
@@ -342,14 +320,16 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="5VY-EZ-ky7"/>
+                                </constraints>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsCompass="NO" id="hjv-Hd-Adf">
-                                <rect key="frame" x="0.0" y="116" width="375" height="507"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </mapView>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXA-Rx-gti">
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXA-Rx-gti">
                                 <rect key="frame" x="323" y="136" width="36" height="36"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="BFA-vk-StJ"/>
+                                    <constraint firstAttribute="width" constant="36" id="QfH-s5-OHg"/>
+                                </constraints>
                                 <state key="normal" image="Compass">
                                     <attributedString key="attributedTitle"/>
                                 </state>
@@ -357,9 +337,8 @@
                                     <action selector="compassButton:" destination="LG7-tS-HfP" eventType="touchUpInside" id="oer-0F-IWw"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xLx-EM-W9O">
+                            <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xLx-EM-W9O">
                                 <rect key="frame" x="74" y="574" width="227" height="32"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="Standard"/>
@@ -373,6 +352,20 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dz9-cd-FCp" firstAttribute="trailing" secondItem="hjv-Hd-Adf" secondAttribute="trailing" id="I3C-QL-TpZ"/>
+                            <constraint firstItem="LXA-Rx-gti" firstAttribute="top" secondItem="vWb-k0-VNQ" secondAttribute="bottom" constant="20" id="JNq-Ka-Snu"/>
+                            <constraint firstItem="dz9-cd-FCp" firstAttribute="bottom" secondItem="hjv-Hd-Adf" secondAttribute="bottom" id="JmD-VE-Tle"/>
+                            <constraint firstItem="vWb-k0-VNQ" firstAttribute="leading" secondItem="dz9-cd-FCp" secondAttribute="leading" id="Kcl-Uy-uJW"/>
+                            <constraint firstItem="hjv-Hd-Adf" firstAttribute="top" secondItem="vWb-k0-VNQ" secondAttribute="bottom" id="R8S-Tr-jg2"/>
+                            <constraint firstItem="xLx-EM-W9O" firstAttribute="leading" secondItem="dz9-cd-FCp" secondAttribute="leading" constant="74" id="aY9-7d-Yno"/>
+                            <constraint firstItem="dz9-cd-FCp" firstAttribute="trailing" secondItem="vWb-k0-VNQ" secondAttribute="trailing" id="byj-AQ-OMh"/>
+                            <constraint firstItem="hjv-Hd-Adf" firstAttribute="leading" secondItem="dz9-cd-FCp" secondAttribute="leading" id="cmi-us-6im"/>
+                            <constraint firstItem="vWb-k0-VNQ" firstAttribute="top" secondItem="dz9-cd-FCp" secondAttribute="top" id="dss-Ta-34T"/>
+                            <constraint firstItem="dz9-cd-FCp" firstAttribute="trailing" secondItem="LXA-Rx-gti" secondAttribute="trailing" constant="16" id="fjG-VX-cpG"/>
+                            <constraint firstItem="dz9-cd-FCp" firstAttribute="trailing" secondItem="xLx-EM-W9O" secondAttribute="trailing" constant="74" id="ll8-G1-1pR"/>
+                            <constraint firstItem="dz9-cd-FCp" firstAttribute="bottom" secondItem="xLx-EM-W9O" secondAttribute="bottom" constant="62" id="x8I-rm-Tdw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dz9-cd-FCp"/>
                     </view>
                     <navigationItem key="navigationItem" title="HikeTracker" id="yLS-GK-nch">

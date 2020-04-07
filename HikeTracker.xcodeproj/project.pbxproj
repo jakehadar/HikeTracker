@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E7B72DB243D05A10068BD7F /* DetailListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B72DA243D05A10068BD7F /* DetailListTableViewCell.swift */; };
 		9A2F905C2409C8C700B4C180 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F905B2409C8C700B4C180 /* AppDelegate.swift */; };
 		9A2F905E2409C8C700B4C180 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F905D2409C8C700B4C180 /* SceneDelegate.swift */; };
 		9A2F90632409C8C700B4C180 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2F90612409C8C700B4C180 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E7B72DA243D05A10068BD7F /* DetailListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListTableViewCell.swift; sourceTree = "<group>"; };
 		9A2F90582409C8C700B4C180 /* HikeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2F905B2409C8C700B4C180 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A2F905D2409C8C700B4C180 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				9A2F90722409CFEB00B4C180 /* View Controllers */,
 				9A2F905B2409C8C700B4C180 /* AppDelegate.swift */,
+				2E7B72DA243D05A10068BD7F /* DetailListTableViewCell.swift */,
 				9A2F905D2409C8C700B4C180 /* SceneDelegate.swift */,
 				9A2F90612409C8C700B4C180 /* Main.storyboard */,
 				9A2F90672409C8CA00B4C180 /* Assets.xcassets */,
@@ -188,6 +191,7 @@
 				9A2F9081240DAC4000B4C180 /* FormatDisplay.swift in Sources */,
 				9A2F907F240DABBC00B4C180 /* UnitExtensions.swift in Sources */,
 				9A2F90742409D00000B4C180 /* HomeViewController.swift in Sources */,
+				2E7B72DB243D05A10068BD7F /* DetailListTableViewCell.swift in Sources */,
 				9A2F9083240DAD5600B4C180 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
