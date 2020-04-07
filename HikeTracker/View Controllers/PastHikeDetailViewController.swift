@@ -21,21 +21,22 @@ class PastHikeDetailViewController: UIViewController {
     
     let dateFormatter = DateFormatter()
     
-    weak var hike: NSManagedObject?
+    weak var hike: Hike?
     
     lazy var hikeDetails: Array<Array<String>> = {
         guard let hike = hike else { fatalError() }
-        let duration = hike.value(forKey: "duration") as! Double
-        let distance = hike.value(forKey: "distance") as! Double
-        let averPace = distance / duration
-        let elevGain = hike.value(forKey: "elevation_gain") as! Int
-        let elevLoss = hike.value(forKey: "elevation_loss") as! Int
+        let durationText = String(format: "%i seconds", hike.duration)
+        let distanceText = String(format: "%.2f meters", hike.distance)
+        let avgPaceText = String(format: "%.2f m/s", Double(hike.duration) / hike.distance)
+        let elevGainText = String(format: "%.2f meters", hike.elevation_gain)
+        let elevLossText = String(format: "%.2f meters", hike.elevation_loss)
+        
         let data = [
-            ["Total Time:", "\(duration)"],
-            ["Distance Travelled:", "\(distance)"],
-            ["Average Pace", "\(averPace)"],
-            ["Total Altitude Gain", "\(elevGain)"],
-            ["Total Altitude Loss", "\(elevLoss)"]
+            ["Total Time:", durationText],
+            ["Distance Travelled:", distanceText],
+            ["Average Pace", avgPaceText],
+            ["Total Altitude Gain", elevGainText],
+            ["Total Altitude Loss", elevLossText]
         ]
         return data
     }()
@@ -52,8 +53,8 @@ class PastHikeDetailViewController: UIViewController {
         detailsTableView.dataSource = self
         
         if let hike = hike {
-            hikeTitle.text = "\(hike.value(forKey: "name") as! String)"
-            hikeDate.text = dateFormatter.string(from: hike.value(forKey: "timestamp") as! Date)
+            hikeTitle.text = hike.name
+            hikeDate.text = dateFormatter.string(from: hike.timestamp!)
             // TODO: configure vc.mapView
         }
     }

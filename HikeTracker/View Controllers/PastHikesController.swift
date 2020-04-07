@@ -13,7 +13,7 @@ class PastHikesViewController: UIViewController {
     
     @IBOutlet weak var hikeTableView: UITableView!
     
-    var hikeArray = [NSManagedObject]()
+    var hikeArray = [Hike]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +25,11 @@ class PastHikesViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
       
         let managedContext = appDelegate.persistentContainer.viewContext
-      
-        let fetchRequest = NSFetchRequest<Hike>(entityName: "Hike")
-      
+        
         do {
-            let fetchedHikes = try managedContext.fetch(fetchRequest)
+            let fetchedHikes = try managedContext.fetch(Hike.fetchRequest())
             for fetchedHike in fetchedHikes {
-                hikeArray.append(fetchedHike as NSManagedObject)
+                hikeArray.append(fetchedHike as! Hike)
             }
         } catch {
             print("Failed")
