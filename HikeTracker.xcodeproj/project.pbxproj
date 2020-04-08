@@ -11,7 +11,6 @@
 		9A2F905E2409C8C700B4C180 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F905D2409C8C700B4C180 /* SceneDelegate.swift */; };
 		9A2F90632409C8C700B4C180 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2F90612409C8C700B4C180 /* Main.storyboard */; };
 		9A2F90662409C8C700B4C180 /* HikeTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F90642409C8C700B4C180 /* HikeTracker.xcdatamodeld */; };
-		9A2F90682409C8CA00B4C180 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A2F90672409C8CA00B4C180 /* Assets.xcassets */; };
 		9A2F906B2409C8CA00B4C180 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2F90692409C8CA00B4C180 /* LaunchScreen.storyboard */; };
 		9A2F90742409D00000B4C180 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F90732409D00000B4C180 /* HomeViewController.swift */; };
 		9A2F90762409D02500B4C180 /* HikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F90752409D02500B4C180 /* HikeViewController.swift */; };
@@ -21,6 +20,7 @@
 		9A2F9083240DAD5600B4C180 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F9082240DAD5600B4C180 /* LocationManager.swift */; };
 		9A2F90902410DB3600B4C180 /* PastHikesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F908F2410DB3600B4C180 /* PastHikesController.swift */; };
 		9A2F90982411845E00B4C180 /* PastHikeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F90972411845E00B4C180 /* PastHikeDetailViewController.swift */; };
+		9A4CE4B5243D2FAD00F5C2F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A4CE4B4243D2FAD00F5C2F6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,6 @@
 		9A2F905D2409C8C700B4C180 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9A2F90622409C8C700B4C180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A2F90652409C8C700B4C180 /* HikeTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HikeTracker.xcdatamodel; sourceTree = "<group>"; };
-		9A2F90672409C8CA00B4C180 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A2F906A2409C8CA00B4C180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A2F906C2409C8CA00B4C180 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A2F90732409D00000B4C180 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		9A2F9082240DAD5600B4C180 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9A2F908F2410DB3600B4C180 /* PastHikesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastHikesController.swift; sourceTree = "<group>"; };
 		9A2F90972411845E00B4C180 /* PastHikeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastHikeDetailViewController.swift; sourceTree = "<group>"; };
+		9A4CE4B4243D2FAD00F5C2F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "View Controllers/Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 				9A2F905B2409C8C700B4C180 /* AppDelegate.swift */,
 				9A2F905D2409C8C700B4C180 /* SceneDelegate.swift */,
 				9A2F90612409C8C700B4C180 /* Main.storyboard */,
-				9A2F90672409C8CA00B4C180 /* Assets.xcassets */,
+				9A4CE4B4243D2FAD00F5C2F6 /* Assets.xcassets */,
 				9A2F90692409C8CA00B4C180 /* LaunchScreen.storyboard */,
 				9A2F906C2409C8CA00B4C180 /* Info.plist */,
 				9A2F90642409C8C700B4C180 /* HikeTracker.xcdatamodeld */,
@@ -166,7 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A2F906B2409C8CA00B4C180 /* LaunchScreen.storyboard in Resources */,
-				9A2F90682409C8CA00B4C180 /* Assets.xcassets in Resources */,
+				9A4CE4B5243D2FAD00F5C2F6 /* Assets.xcassets in Resources */,
 				9A2F90632409C8C700B4C180 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
