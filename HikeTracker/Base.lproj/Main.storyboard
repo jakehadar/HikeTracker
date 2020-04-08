@@ -164,6 +164,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NOs-oY-TAJ"/>
                                     <barButtonItem title="Delete Hike?" springLoaded="YES" id="Sop-Id-xZe">
                                         <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="deleteButton:" destination="SKV-eO-riH" id="AOn-NJ-ufQ"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ycy-rj-N6S"/>
                                 </items>

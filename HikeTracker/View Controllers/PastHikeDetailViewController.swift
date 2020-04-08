@@ -16,15 +16,12 @@ class PastHikeDetailViewController: UIViewController {
     @IBOutlet weak var hikeDate: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deleteHikeButton: UIToolbar!
-    
     @IBOutlet weak var detailsTableView: UITableView!
     
-    let dateFormatter = DateFormatter()
+    weak var hike: Hike!
     
-    weak var hike: Hike?
-    
-    lazy var hikeDetails: Array<Array<String>> = {
-        guard let hike = hike else { fatalError() }
+    lazy var detailsTableData: Array<Array<String>> = {
+        // Scale and format numeric data into display text.
         let durationText = String(format: "%i seconds", hike.duration)
         let distanceText = String(format: "%.2f meters", hike.distance)
         let avgPaceText = String(format: "%.2f m/s", Double(hike.duration) / hike.distance)
@@ -40,6 +37,8 @@ class PastHikeDetailViewController: UIViewController {
         ]
         return data
     }()
+    
+    let dateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,26 +50,28 @@ class PastHikeDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         detailsTableView.dataSource = self
-        
-        if let hike = hike {
-            hikeTitle.text = hike.name
-            hikeDate.text = dateFormatter.string(from: hike.timestamp!)
-            // TODO: configure vc.mapView
-        }
+        hikeTitle.text = hike.name
+        hikeDate.text = dateFormatter.string(from: hike.timestamp!)
+        // TODO: configure annotated map
+    }
+    
+    @IBAction func deleteButton(_ sender: UIBarButtonItem) {
+        // TODO: implement
+        debugPrint("Delete tapped.")
     }
 }
 
 extension PastHikeDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard tableView == detailsTableView else { fatalError() }
-        return hikeDetails.count
+        return detailsTableData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard tableView == detailsTableView else { fatalError() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as! DetailListTableViewCell
-        cell.title.text = hikeDetails[indexPath.row][0]
-        cell.value.text = hikeDetails[indexPath.row][1]
+        cell.title.text = detailsTableData[indexPath.row][0]
+        cell.value.text = detailsTableData[indexPath.row][1]
         return cell
     }
 }
