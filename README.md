@@ -5,7 +5,7 @@ HikeTracker is a native iOS app that uses CoreMotion, CoreData, and MapKit to tr
 
 ## Demo
 Note: this demo is using Xcode's built in location simulator and therefore does not update altitude changes via CoreMotion.
-![](hiketracker-min.gif)
+![](HikeTracker4820-min.gif)
 
 
 #### Known Issues, Limitations, and Future Plans
